@@ -1,1 +1,1 @@
-# catalog-service
+# polar-bookshop
