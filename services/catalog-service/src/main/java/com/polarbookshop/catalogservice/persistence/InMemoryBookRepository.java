@@ -15,11 +15,6 @@ public class InMemoryBookRepository implements BookRepository {
     private static final Map<String, Book> books = new ConcurrentHashMap<>();
 
     @Override
-    public void deleteByIsbn(String isbn) {
-        books.remove(isbn);
-    }
-
-    @Override
     public boolean existsByIsbn(String isbn) {
         return books.containsKey(isbn);
     }
@@ -36,6 +31,13 @@ public class InMemoryBookRepository implements BookRepository {
 
     @Override
     public Book save(Book book) {
-        return books.put(book.getIsbn(), book);
+        books.put(book.isbn(), book);
+        return book;
     }
+
+    @Override
+    public void deleteByIsbn(String isbn) {
+        books.remove(isbn);
+    }
+
 }
