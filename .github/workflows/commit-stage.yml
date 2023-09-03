@@ -6,7 +6,7 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-22.04
     permissions:
-      content: read
+      contents: read
       security-events: write
     steps:
       - name: Checkout source code
