@@ -6,21 +6,32 @@ plugins {
 
 group 'com.polarbookshop'
 version '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '21'
 
 repositories {
 	mavenCentral()
 }
+
+bootRun {
+	systemProperty 'spring.profiles.active', 'testData'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+ext['snakeyaml.version'] = '2.0'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
-ext['snakeyaml.version'] = '2.0'
-
-tasks.named('test', Test) {
+test {
 	useJUnitPlatform()
 }

@@ -1,2 +1,2 @@
 rootProject.name = 'polar-bookshop'
-include 'services:catalog-service'
+include 'services:catalog-service', 'services:config-service'
